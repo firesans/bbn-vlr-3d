@@ -1,0 +1,85 @@
+2023-04-24 10:38:41,722 ---------------------Cfg is set as follow--------------------
+2023-04-24 10:38:41,722 BACKBONE:
+  FEAT: 256
+  FREEZE: False
+  PRETRAINED_MODEL: 
+  TYPE: pointNetModel
+CLASSIFIER:
+  BIAS: True
+  TYPE: FC
+COLOR_SPACE: RGB
+CPU_MODE: True
+DATASET:
+  CLASSES: 10
+  DATASET: IMBALANCEMODELNET10
+  DATA_TYPE: jpg
+  IMBALANCECIFAR:
+    RANDOM_SEED: 0
+    RATIO: 0.01
+  IMBALANCEMODELNET10:
+    RATIO: 0.02
+  ROOT: /home/cifar10/data
+  TRAIN_JSON: 
+  VALID_JSON: 
+EVAL_MODE: False
+INPUT_SIZE: (2048, 3)
+LOSS:
+  CSCE:
+    DRW_EPOCH: 160
+    SCHEDULER: default
+  LDAM:
+    DRW_EPOCH: 160
+    MAX_MARGIN: 0.5
+  LOSS_TYPE: CrossEntropy
+MODULE:
+  TYPE: IDENTITY
+NAME: BBN.MODELNET10.pointnet.200epoch
+OUTPUT_DIR: ./output/modelnet10
+PIN_MEMORY: True
+RESUME_MODE: all
+RESUME_MODEL: 
+SAVE_STEP: 5
+SHOW_STEP: 100
+TEST:
+  BATCH_SIZE: 64
+  MODEL_FILE: best_model.pth
+  NUM_WORKERS: 8
+TRAIN:
+  BATCH_SIZE: 128
+  COMBINER:
+    TYPE: default
+  LR_SCHEDULER:
+    COSINE_DECAY_END: 0
+    LR_FACTOR: 0.01
+    LR_STEP: [120, 160]
+    TYPE: warmup
+    WARM_EPOCH: 5
+  MAX_EPOCH: 200
+  NUM_WORKERS: 16
+  OPTIMIZER:
+    BASE_LR: 0.1
+    MOMENTUM: 0.9
+    TYPE: SGD
+    WEIGHT_DECAY: 0.0002
+  SAMPLER:
+    DUAL_SAMPLER:
+      ENABLE: True
+      TYPE: reverse
+    TYPE: default
+    WEIGHTED_SAMPLER:
+      TYPE: balance
+  SHUFFLE: True
+  TENSORBOARD:
+    ENABLE: True
+TRANSFORMS:
+  PROCESS_DETAIL:
+    RANDOM_CROP:
+      PADDING: 4
+    RANDOM_RESIZED_CROP:
+      RATIO: (0.75, 1.333333333)
+      SCALE: (0.08, 1.0)
+  TEST_TRANSFORMS: ()
+  TRAIN_TRANSFORMS: ('random_crop', 'random_horizontal_flip')
+VALID_STEP: 1
+2023-04-24 10:38:41,723 -------------------------------------------------------------
+2023-04-24 10:39:07,097 This directory has already existed, Please remember to modify your cfg.NAME

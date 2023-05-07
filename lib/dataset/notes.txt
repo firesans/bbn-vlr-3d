@@ -1,0 +1,2 @@
+observations:
+	- noticed that the ModelNet10 dataset is already not uniformly distributed (smallest class of 110 samples and largest class of 600 samples)
